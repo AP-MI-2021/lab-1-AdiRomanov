@@ -21,7 +21,6 @@ assert is_prime(7) is True
 '''
 Returneaza produsul numerelor din lista lst.
 '''
-a = [1, 2, 5, 3]
 
 def get_product(lst):
     # codul vostru aici
@@ -57,24 +56,43 @@ def get_cmmdc_v2(x, y):
 
 def main():
 # interfata de tip consola aici
-    n = int(input("Numar: "))
-    j=is_prime(n)
-    if j == True:
-        print("Numarul este prim")
-    else:
-        print("Numarul nu este prim")
+    while True:
+        print("1. Verificare primalitate. ")
+        print("2. Produsul numerelor unei liste. ")
+        print("3. CMMDC Metoda 1. ")
+        print("4. CMMDC Metoda 2. ")
+        print("x. Iesire din program. ")
+        optiune = input("Alege optiunea: ")
+        if optiune == '1':
+            n = int(input("Numar: "))
+            j=is_prime(n)
+            if j == True:
+                print("Numarul este prim")
+            else:
+                print("Numarul nu este prim")
 
-    print("Produsul numerelor din lista este: ", get_product(a))
+        elif optiune == '2':
+            numere_str = input("Introduceti numerele separate prin spatiu: ")
+            numere_str_lst = numere_str.split(' ')
+            numere_int_lst = []
+            for nr_str in numere_str_lst:
+                numere_int_lst.append(int(nr_str))
+            produsul_numerelor = get_product(numere_int_lst)
+            print("Produsul numerelor din lista este: ", produsul_numerelor)
+        elif optiune == '3':
+            p = int( input("Introduceti primul numar: ") )
+            q = int( input("Introduceti al doilea numar numar: ") )
 
-    p = int( input("Introduceti primul numar: ") )
-    q = int( input("Introduceti al doilea numar numar: ") )
+            print(f"(M1)CMMDC al celor doua numere, {p} si {q} este: ", get_cmmdc_v1(p,q) )
+        elif optiune == '4':
+            p = int(input("Introduceti primul numar: "))
+            q = int(input("Introduceti al doilea numar numar: "))
 
-    print(f"(M1)CMMDC al celor doua numere, {p} si {q} este: ", get_cmmdc_v1(p,q) )
-
-    p = int(input("Introduceti primul numar: "))
-    q = int(input("Introduceti al doilea numar numar: "))
-
-    print(f"(M2)CMMDC al celor doua numere, {p} si {q} este: ", get_cmmdc_v2(p,q) )
+            print(f"(M2)CMMDC al celor doua numere, {p} si {q} este: ", get_cmmdc_v2(p,q) )
+        elif optiune == 'x':
+            break
+        else:
+            print("Optiune invlaida! Reincercati!")
 
 main()
 
